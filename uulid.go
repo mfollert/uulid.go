@@ -8,6 +8,7 @@ import (
 	"github.com/oklog/ulid/v2"
 	"io"
 	"io/ioutil"
+	"strings"
 	"time"
 )
 
@@ -28,6 +29,11 @@ func (uulid UULID) AsULID() ulid.ULID {
 // ULIDString returns the Base32 ULID representation, which occupies 26 characters, like `01ARZ3NDEKTSV4RRFFQ69G5FAV`
 func (uulid UULID) ULIDString() string {
 	return uulid.AsULID().String()
+}
+
+// ULIDString returns the Base32 ULID representation in lowercase, which occupies 26 characters, like `01arz3ndektsv4rrffq69g5fav`
+func (uulid UULID) ULIDStringLower() string {
+	return strings.ToLower(uulid.AsULID().String())
 }
 
 // UUIDString returns the hex encoded UUID format that looks like `XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX`
